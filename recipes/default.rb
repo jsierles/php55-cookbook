@@ -25,7 +25,6 @@ case node[:platform]
     
     # add the webtatic repository
     yum_repository "webtatic" do
-        repo_name "webtatic"
         description "webtatic Stable repo"
         url "http://repo.webtatic.com/yum/el6/x86_64/"
         key "RPM-GPG-KEY-webtatic-andy"
@@ -50,7 +49,6 @@ case node[:platform]
   when "rhel", "fedora", "suse", "centos"
   # add the webtatic repository
   yum_repository "webtatic" do
-    repo_name "webtatic"
     description "webtatic Stable repo"
     url "http://repo.webtatic.com/yum/el6/x86_64/"
     key "RPM-GPG-KEY-webtatic-andy"
@@ -70,7 +68,7 @@ case node[:platform]
 
   when "debian"
     include_recipe "apt"
-	apt_repository "wheezy-php55" do
+    apt_repository "wheezy-php55" do
 		uri "#{node['php55']['dotdeb']['uri']}"
 		distribution "#{node['php55']['dotdeb']['distribution']}-php55"
 		components ['all']
