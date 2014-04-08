@@ -26,16 +26,10 @@ case node[:platform]
     # add the webtatic repository
     yum_repository "webtatic" do
         description "webtatic Stable repo"
-        url "http://repo.webtatic.com/yum/el6/x86_64/"
-        key "RPM-GPG-KEY-webtatic-andy"
-        action :add
+        baseurl "http://repo.webtatic.com/yum/el6/x86_64/"
+        gpgkey "http://repo.webtatic.com/yum/RPM-GPG-KEY-webtatic-andy"
+        action :create
     end
-    
-    yum_key "RPM-GPG-KEY-webtatic-andy" do
-        url "http://repo.webtatic.com/yum/RPM-GPG-KEY-webtatic-andy"
-        action :add
-    end
-    
     
     # remove any existing php/mysql
     execute "yum remove -y php* mysql*"
